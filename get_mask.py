@@ -33,7 +33,7 @@ class Mask:
             xc, yc, w, h = [(loc_x - mw / 2) / width, (loc_y - mh / 2) / height, mw / width, mh / height]
             np.append(label_new, np.array([self.mask_cls, xc, yc, w, h]))
             self.img[loc_x - mw:loc_x, loc_y - mh:loc_y, :] = mask[mask[:, :, 3] == 0][:, :, :3]
-        if self.mask_cls == -1:
+        if self.mask_cls != -1:
             self.label = label_new
         return self.img, self.label
 
